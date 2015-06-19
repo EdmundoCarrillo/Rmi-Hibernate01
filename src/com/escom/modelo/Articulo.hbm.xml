@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/06/2015 02:09:53 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.escom.modelo.Articulo" table="articulo" catalog="inventario" optimistic-lock="version">
+        <id name="idarticulo" type="java.lang.Integer">
+            <column name="idarticulo" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="existencia" type="int">
+            <column name="existencia" not-null="true" />
+        </property>
+        <property name="precio" type="double">
+            <column name="precio" precision="22" scale="0" not-null="true" />
+        </property>
+        <set name="movArticulos" table="mov_articulo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idarticulo" not-null="true" />
+            </key>
+            <one-to-many class="com.escom.modelo.MovArticulo" />
+        </set>
+    </class>
+</hibernate-mapping>

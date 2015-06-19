@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/06/2015 02:09:53 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.escom.modelo.MovArticulo" table="mov_articulo" catalog="inventario" optimistic-lock="version">
+        <id name="idmovimiento" type="java.lang.Integer">
+            <column name="idmovimiento" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="articulo" class="com.escom.modelo.Articulo" fetch="select">
+            <column name="idarticulo" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="date">
+            <column name="fecha" length="10" not-null="true" />
+        </property>
+        <property name="tipo" type="char">
+            <column name="tipo" length="1" not-null="true" />
+        </property>
+        <property name="cantidad" type="string">
+            <column name="cantidad" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
